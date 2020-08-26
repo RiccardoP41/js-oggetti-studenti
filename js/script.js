@@ -18,9 +18,9 @@ $(document).ready(function(){
         "eta": 21,
     };
 
-    // Stampare a schermo attraverso il for in tutte le proprietà.
+    // Stampare a schermo attraverso il "for in" tutte le proprietà.
     for (var k in studente) {
-        console.log(k + ": " + studente[k]);
+        $(".studente").append(k + ": " + studente[k] + "</br>"); // ci vuole append perché .text() e.html() modificano, quindi sovrascrivono il valore
     }
 
     // Creare un array di oggetti di studenti.
@@ -49,29 +49,28 @@ $(document).ready(function(){
 
     // Ciclare su tutti gli studenti e stampare per ognuno nome e cognome.
     for (var i = 0; i < classe.length; i++) {
-        console.log(classe[i].nome + " " + classe[i].cognome);
+        $(".classe").append(classe[i].nome + " " + classe[i].cognome + "</br>");
     }
 
     // Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente
     // inserendo nell’ordine: nome, cognome e età.
-
     var nome = prompt("inserisci il tuo nome");
     var cognome = prompt("inserisci il tuo cognome");
     var eta = parseInt(prompt("Quanti anno hai?"));
 
-    var nuovo_studente = {
+    var nuovoStudente = {
         "nome": nome,
         "cognome": cognome,
         "eta": eta,
     };
 
-    classe.push(nuovo_studente);
+    classe.push(nuovoStudente);
     console.log(classe);
 
-
-
-
-
-
-
+    // stampare con jQuery
+    for (var i = 0; i < classe.length; i++) {
+        for (var k in classe[i]) {
+            $(".nuovo").append(k + ": " + classe[i][k] + "</br>");
+        }
+    }
 });
